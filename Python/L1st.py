@@ -15,7 +15,7 @@ class l1st(list):
         
         try: 
             start = key.start-1 if key.start else None
-            stop = key.stop-1 if key.stop else None
+            stop = key.stop
             step = key.step
             return super().__getitem__(slice(start, stop, step))
         except:
@@ -29,7 +29,7 @@ class l1st(list):
         
         try: 
             start = key.start-1 if key.start else None
-            stop = key.stop-1 if key.stop else None
+            stop = key.stop
             step = key.step
             return super().__setitem__(slice(start, stop, step), val)
         except:
