@@ -12,9 +12,13 @@ class l1st(list):
             return super().__getitem__(key-1)
         except:
             pass
+
+        start = key.start-1 if key.start else None
+        stop = key.stop-1 if key.stop else None
+        step = key.step
         
         try: 
-            return super().__getitem__(slice(key.start, key.stop, key.step))
+            return super().__getitem__(slice(start, stop, step))
         except:
             pass
     
@@ -23,9 +27,13 @@ class l1st(list):
             return super().__setitem__(key-1, val)
         except:
             pass
+
+        start = key.start-1 if key.start else None
+        stop = key.stop-1 if key.stop else None
+        step = key.step
         
         try: 
-            return super().__setitem__(slice(key.start, key.stop, key.step), val)
+            return super().__setitem__(slice(start, stop, step), val)
         except:
             pass
 
