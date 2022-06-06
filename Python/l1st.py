@@ -1,4 +1,4 @@
-# TODO: implement list slicing 
+"""Module which provides a 1-indexed list class named l1st"""
 
 class l1st:
 
@@ -62,12 +62,3 @@ class l1st:
     
     def sort(self, **kwargs):
         self._list.sort(kwargs)
-
-    
-
-l = l1st(i for i in range(4))
-print(l)
-
-print(l[2])
-
-print(*l)
