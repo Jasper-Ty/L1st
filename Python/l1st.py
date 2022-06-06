@@ -45,7 +45,7 @@ class l1st:
         self._list.extend(iter)
     
     def index(self, value):
-        return self._list.index(value)-1
+        return self._list.index(value)+1
     
     def insert(self, index, item):
         self._list.insert(index-1, item)
