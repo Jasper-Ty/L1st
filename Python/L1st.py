@@ -8,10 +8,26 @@ class l1st(list):
         super().__init__(*args)
 
     def __getitem__(self, key):
-        return super().__getitem__(key-1)
+        try:
+            return super().__getitem__(key-1)
+        except:
+            pass
+        
+        try: 
+            return super().__getitem__(slice(key.start, key.stop, key.step))
+        except:
+            pass
     
     def __setitem__(self, key, val):
-        super().__setitem__(key-1, val)
+        try:
+            return super().__setitem__(key-1, val)
+        except:
+            pass
+        
+        try: 
+            return super().__setitem__(slice(key.start, key.stop, key.step), val)
+        except:
+            pass
 
     def index(self, value):
         return super().index(value)+1
