@@ -10,30 +10,25 @@ class l1st(list):
     def __getitem__(self, key):
         try:
             return super().__getitem__(key-1)
-        except:
+        except TypeError:
             pass
         
-        try: 
-            start = key.start-1 if key.start else None
-            stop = key.stop
-            step = key.step
-            return super().__getitem__(slice(start, stop, step))
-        except:
-            pass
+        start = key.start-1 if key.start else None
+        stop = key.stop
+        step = key.step
+        return super().__getitem__(slice(start, stop, step))
     
     def __setitem__(self, key, val):
         try:
             return super().__setitem__(key-1, val)
-        except:
+        except TypeError:
             pass
-        
-        try: 
-            start = key.start-1 if key.start else None
-            stop = key.stop
-            step = key.step
-            return super().__setitem__(slice(start, stop, step), val)
-        except:
-            pass
+
+        start = key.start-1 if key.start else None
+        stop = key.stop
+        step = key.step
+        return super().__setitem__(slice(start, stop, step), val)
+
 
     def index(self, value):
         return super().index(value)+1
