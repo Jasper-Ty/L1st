@@ -6,3 +6,8 @@ L1st is a collection of implementations of list data-types that begin indexing a
 
 - Python
 - Java (ArrayList)
+
+## To-do
+
+- C++
+- JavaScript
