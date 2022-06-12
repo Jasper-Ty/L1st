@@ -1,5 +1,8 @@
 """Module which provides a 1-indexed list class named l1st"""
 
+from typing import Type
+
+
 class l1st(list):
 
     """Python list wrapper that begins indexing at 1"""
@@ -12,11 +15,21 @@ class l1st(list):
             return super().__getitem__(key-1)
         except TypeError:
             pass
+
+        try:
+            start = key.start-1 if key.start else None
+            stop = key.stop
+            step = key.step
+        except AttributeError:
+            pass
+
+        try:
+            return super().__getitem__(slice(start, stop, step))
+        except TypeError:
+            pass
         
-        start = key.start-1 if key.start else None
-        stop = key.stop
-        step = key.step
-        return super().__getitem__(slice(start, stop, step))
+        raise TypeError(f'list indices must be integers or slices, not {type(key).__name__}')
+        
     
     def __setitem__(self, key, val):
         try:
@@ -24,11 +37,20 @@ class l1st(list):
         except TypeError:
             pass
 
-        start = key.start-1 if key.start else None
-        stop = key.stop
-        step = key.step
-        return super().__setitem__(slice(start, stop, step), val)
-
+        try:
+            start = key.start-1 if key.start else None
+            stop = key.stop
+            step = key.step
+            
+        except AttributeError:
+            pass
+        
+        try:
+            return super().__setitem__(slice(start, stop, step), val)
+        except TypeError:
+            pass
+        
+        raise TypeError(f'list indices must be integers or slices, not {type(key).__name__}')
 
     def index(self, value):
         return super().index(value)+1
@@ -39,4 +61,3 @@ class l1st(list):
     def pop(self, *args):
         idx = args[0]-1 if args else -1
         super().pop(idx)
-    
