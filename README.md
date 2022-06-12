@@ -5,3 +5,4 @@ L1st is a collection of implementations of list data-types that begin indexing a
 ## Currently supported languages
 
 - Python
+- Java (ArrayList)
